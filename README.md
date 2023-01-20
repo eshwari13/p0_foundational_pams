@@ -2,18 +2,18 @@
 Patirnt Appointment Mannagement System
 
 # Feature used :
-Core Java,
-SQL,
-JDBC,
-JUnit,
-Maven,
+Core Java<br>
+SQL<br>
+JDBC<br>
+JUnit<br>
+Maven<br>
 Git SCM
 
 # Functionality Achived
-Patient Registration
-Admin adding Doctor ,Receptionist in System
-Booking Appointment
-Cancelling Appointment
+*Patient Registration<br>
+*Admin adding Doctor ,Receptionist in System<br>
+*Booking Appointment<br>
+*Cancelling Appointment<br>
 
 ### Overview ###
 we wanted to develop appointment system which will help you seamlessly manage appointments ,we have used Eclipse implementation and Mysql as Database for storing the data. We were are able to achive the above mention functionalities <br>
