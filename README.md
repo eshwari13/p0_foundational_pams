@@ -1,5 +1,5 @@
 ### p0-foundational-pams ###
-Patirnt Appointment Mannagement System
+<h3>Patient Appointment Mannagement System</h3>
 
 # Feature used :
 Core Java<br>
@@ -10,10 +10,10 @@ Maven<br>
 Git SCM
 
 # Functionality Achived
-~Patient Registration<br>
-~Admin adding Doctor ,Receptionist in System<br>
-~Booking Appointment<br>
-~Cancelling Appointment<br>
+Patient Registration<br>
+Admin adding Doctor ,Receptionist in System<br>
+Booking Appointment<br>
+Cancelling Appointment<br>
 
 ### Overview ###
 we wanted to develop appointment system which will help you seamlessly manage appointments ,we have used Eclipse implementation and Mysql as Database for storing the data. We were are able to achive the above mention functionalities <br>
