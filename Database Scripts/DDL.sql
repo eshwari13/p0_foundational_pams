@@ -30,7 +30,7 @@ ADD COLUMN (age int NULL);
 CREATE TABLE reminder(
 message_id int auto_increment PRIMARY KEY,
 message varchar(100),
-patient_id int,
+patient_id varchar(50),
 FOREIGN KEY (patient_id) REFERENCES PATIENT_RECORD(login_id)
 );
 /*

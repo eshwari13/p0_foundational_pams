@@ -9,17 +9,14 @@ USE ESHWARI;
 DROP TRIGGER after_pateint_inserts;
 
 DELIMITER $$
-CREATE TRIGGER after_pateint_inserts
+CREATE TRIGGER after_pateint_record_inserts
 AFTER INSERT 
-ON PATIENT_RECORD FOR EACH ROW
+ON patient_record FOR EACH ROW
 BEGIN #{
-	IF NEW.date_of_birth IS NOT NULL THEN
-		INSERT INTO PATIENT_RECORD(age)
-        VALUES(Func_Calculate_Age(NEW.date_of_birth));
+	IF NEW.birth_date IS  NULL THEN
+		   INSERT INTO reminders(memberId, message)
+        VALUES(NEW.login_id,CONCAT('Hi ', NEW.patient_name, ', please update your date of birth.'));
 	END IF;
 END $$  #}
 
 DELIMITER ;
-
-
-    
