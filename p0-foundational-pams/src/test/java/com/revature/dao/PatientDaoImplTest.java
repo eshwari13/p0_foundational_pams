@@ -24,20 +24,6 @@ public class PatientDaoImplTest {
 		patientDao = new PatientDaoImpl();
 	}
 
-//	@Test
-//	public void testAdd() {
-//		Patient toBeAdded = new Patient("esh","r","z","e","2000/12/02");
-//		PatientDao r=new PatientDaoImpl();
-//		Patient added = null;
-//		try {
-//			r.addTest(toBeAdded);
-//			added = r.getPatientDetailsTest(toBeAdded.getLoginId());
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		assertEquals(toBeAdded.getLoginId(), added.getLoginId());
-//		
-//	}
 
 	
 	@Test

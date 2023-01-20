@@ -15,5 +15,5 @@ public interface PatientDao {
 	public List<Patient> getPatients() throws SQLException;
 
 	public int update(Patient patient) throws SQLException;
-	
+
 }

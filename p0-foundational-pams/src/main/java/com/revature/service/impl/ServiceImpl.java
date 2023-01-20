@@ -22,15 +22,15 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public void login()  {
+	public void login() {
 		try {
-			
+
 			do {
 				logger.info(Constant.welcomeUserMessage);
 				logger.info(Constant.signIn);
 				logger.info(Constant.signUp);
 				logger.info(Constant.exit);
-				
+
 				int choice = scan.nextInt();
 				scan.nextLine();
 				switch (choice) {
@@ -46,15 +46,11 @@ public class ServiceImpl implements Service {
 				default:
 					logger.info("\t\t\tWrong option selected!");
 				}
-				}
-			while(true);
+			} while (true);
 
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 
 	}
 

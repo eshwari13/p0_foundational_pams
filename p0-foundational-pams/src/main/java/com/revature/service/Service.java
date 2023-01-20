@@ -4,5 +4,5 @@ import java.sql.SQLException;
 
 public interface Service {
 
-	public void login() throws SQLException ;
+	public void login() throws SQLException;
 }

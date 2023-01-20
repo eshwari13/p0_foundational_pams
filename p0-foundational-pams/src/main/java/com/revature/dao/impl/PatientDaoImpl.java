@@ -15,13 +15,14 @@ import com.revature.constants.Constant;
 import com.revature.dao.PatientDao;
 import com.revature.model.Patient;
 
-public class PatientDaoImpl implements PatientDao{
+public class PatientDaoImpl implements PatientDao {
 
-public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
-	
+	public static final Logger logger = Logger.getLogger(PatientDaoImpl.class);
+
 	private static Connection con = DatabaseConnection.getConnection();
 	Scanner scan = new Scanner(System.in);
 	public static int count;
+
 	@Override
 	public int add() throws SQLException {
 		Patient patient = new Patient();
@@ -37,10 +38,10 @@ public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
 		patient.setPhoneNo(scan.nextLine());
 		logger.info("Enter Patient BirthDate : ");
 		patient.setBirthDate(scan.nextLine());
-		
+
 		String insertQuery = Constant.INSERT_QUERY;
-		PreparedStatement ps = con.prepareStatement(insertQuery); 
-		
+		PreparedStatement ps = con.prepareStatement(insertQuery);
+
 		ps.setString(1, patient.getLoginId());
 		ps.setString(2, patient.getPassword());
 		ps.setString(3, patient.getPatientName());
@@ -48,8 +49,8 @@ public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
 		ps.setString(5, patient.getPhoneNo());
 		ps.setString(6, patient.getBirthDate());
 		ps.setInt(7, patient.getAge());
-	
-		logger.debug("I want to inspect PreparedStatement object: "+ps);
+
+		logger.debug("I want to inspect PreparedStatement object: " + ps);
 		int n = ps.executeUpdate();
 		ps.close();
 		logger.info("Added User ");
@@ -75,7 +76,7 @@ public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
 		List<Patient> patients = new ArrayList<Patient>();
 
 		while (rs.next()) {
-			count=0;
+			count = 0;
 			Patient patient = new Patient();
 			patient.setLoginId(rs.getString("LOGIN_ID"));
 			patient.setPassword(rs.getString("PASSWORD"));
@@ -95,8 +96,8 @@ public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
 
 	@Override
 	public int update(Patient patient) throws SQLException {
-		
-		//`LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age`
+
+		// `LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age`
 		logger.info("Enter password to update: ");
 		patient.setPassword(scan.nextLine());
 		logger.info("Enter Patient Name : ");
@@ -113,10 +114,10 @@ public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
 		patient.setPhysicalDisability(scan.nextLine());
 		logger.info("Enter identity Proof : ");
 		patient.setIdentityProof(scan.nextLine());
-		
+
 		String updateQuery = Constant.UPDATE_QUERY;
 		PreparedStatement ps = con.prepareStatement(updateQuery);
-		
+
 		ps.setString(1, patient.getPassword());
 		ps.setString(2, patient.getPatientName());
 		ps.setString(3, patient.getEmail());
@@ -127,13 +128,11 @@ public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
 		ps.setString(8, patient.getIdentityProof());
 		ps.setInt(9, patient.getAge());
 		ps.setString(10, patient.getLoginId());
-		
+
 		int n = ps.executeUpdate();
 		return n;
 	}
 
-	
-	
 	@Override
 	public Patient getPatientDetails(String loginId) throws SQLException {
 		String selectSpecificQuery = Constant.SELECT_SPECIFIC_QUERY;
@@ -144,7 +143,7 @@ public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
 		boolean found = false;
 		while (rs.next()) {
 			found = true;
-			//`LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age`
+			// `LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age`
 			patient.setLoginId(rs.getString("LOGIN_ID"));
 			patient.setPassword(rs.getString("PASSWORD"));
 			patient.setPatientName(rs.getString("PATIENT_NAME"));
@@ -162,7 +161,4 @@ public static final Logger logger =  Logger.getLogger(PatientDaoImpl.class);
 			return null;
 	}
 
-	
-
-	
 }

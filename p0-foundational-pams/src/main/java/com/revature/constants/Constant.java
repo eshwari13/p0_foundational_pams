@@ -4,14 +4,15 @@ public class Constant {
 	public static final String welcomeUserMessage = "==================Welcome to Dr.24/7=============) ";
 	public static final String signIn = "1.Sign In";
 	public static final String signUp = "2.Sign Up";
-	public static final String SELECT_ALL_QUERY="SELECT `LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age` FROM `pams`.`PATIENT_RECORD`";
-	public static final String SELECT_SPECIFIC_QUERY="SELECT `LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age` FROM `pams`.`Patient_Record` WHERE `LOGIN_ID`=? ";
-	public static final String INSERT_QUERY="INSERT INTO `pams`.`PATIENT_RECORD` (`LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`age`) VALUES (?,?,?,?,?,?,?) ";
-	public static final String UPDATE_QUERY="UPDATE `pams`.`PATIENT_RECORD` SET `PASSWORD`=?,`patient_name`=?,`email`=?,`phone_No`=?,`birth_date`=?,`address`=?,`physical_disability`=?,`identity_proof`=?,`age`=? WHERE `LOGIN_ID`=? ";
-	public static final String DELETE_QUERY="DELETE FROM `pams`.`PATIENT_RECORD` WHERE `LOGIN_ID`=? ";
+	public static final String SELECT_ALL_QUERY = "SELECT `LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age` FROM `pams`.`PATIENT_RECORD`";
+	public static final String SELECT_SPECIFIC_QUERY = "SELECT `LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age` FROM `pams`.`Patient_Record` WHERE `LOGIN_ID`=? ";
+	public static final String INSERT_QUERY = "INSERT INTO `pams`.`PATIENT_RECORD` (`LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`age`) VALUES (?,?,?,?,?,?,?) ";
+	public static final String UPDATE_QUERY = "UPDATE `pams`.`PATIENT_RECORD` SET `PASSWORD`=?,`patient_name`=?,`email`=?,`phone_No`=?,`birth_date`=?,`address`=?,`physical_disability`=?,`identity_proof`=?,`age`=? WHERE `LOGIN_ID`=? ";
+	public static final String DELETE_QUERY = "DELETE FROM `pams`.`PATIENT_RECORD` WHERE `LOGIN_ID`=? ";
 	public static final String exit = "3.Exit";
 	public static final String exitMessage = "==========Thank You do visit again==========";
-	private Constant() {}
-	
-	
+
+	private Constant() {
+	}
+
 }
