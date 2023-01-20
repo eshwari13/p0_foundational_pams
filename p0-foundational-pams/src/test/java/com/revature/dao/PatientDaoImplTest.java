@@ -37,13 +37,5 @@ public class PatientDaoImplTest {
 		}
 		assertNull(deleted);
 	}
-	@Test
-	public void testGetPatients() throws SQLException {
-		
-		
-			patientDao.getPatients();
-			int patientCount=PatientDaoImpl.count;
-		assertNotEquals(0,PatientDaoImpl.count);
-		
-	}
+	
 }

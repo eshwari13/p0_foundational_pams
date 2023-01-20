@@ -130,7 +130,7 @@ public class Patient {
 	}
 
 	public void setAge() {
-		this.age = dateUtil.ageCalculator(birthDate);
+		age = dateUtil.ageCalculator(birthDate);
 	}
 
 }

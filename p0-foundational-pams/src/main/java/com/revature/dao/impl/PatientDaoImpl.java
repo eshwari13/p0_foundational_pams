@@ -26,17 +26,17 @@ public class PatientDaoImpl implements PatientDao {
 	@Override
 	public int add() throws SQLException {
 		Patient patient = new Patient();
-		logger.info("Enter Patient loginId : ");
+		logger.info("\nEnter Patient loginId : ");
 		patient.setLoginId(scan.nextLine());
-		logger.info("Enter password : ");
+		logger.info("\nEnter password : ");
 		patient.setPassword(scan.nextLine());
-		logger.info("Enter Patient Name : ");
+		logger.info("\nEnter Patient Name : ");
 		patient.setPatientName(scan.nextLine());
-		logger.info("Enter Patient emailId : ");
+		logger.info("\nEnter Patient emailId : ");
 		patient.setEmail(scan.nextLine());
-		logger.info("Enter Patient PhoneNo. : ");
+		logger.info("\nEnter Patient PhoneNo. : ");
 		patient.setPhoneNo(scan.nextLine());
-		logger.info("Enter Patient BirthDate : ");
+		logger.info("\nEnter Patient BirthDate : ");
 		patient.setBirthDate(scan.nextLine());
 
 		String insertQuery = Constant.INSERT_QUERY;
@@ -76,7 +76,7 @@ public class PatientDaoImpl implements PatientDao {
 		List<Patient> patients = new ArrayList<Patient>();
 
 		while (rs.next()) {
-			count = 0;
+			
 			Patient patient = new Patient();
 			patient.setLoginId(rs.getString("LOGIN_ID"));
 			patient.setPassword(rs.getString("PASSWORD"));
@@ -89,7 +89,7 @@ public class PatientDaoImpl implements PatientDao {
 			patient.setIdentityProof(rs.getString("identity_proof"));
 			patient.setAge();
 			patients.add(patient);
-			count++;
+		
 		}
 		return patients;
 	}
@@ -98,21 +98,21 @@ public class PatientDaoImpl implements PatientDao {
 	public int update(Patient patient) throws SQLException {
 
 		// `LOGIN_ID`,`PASSWORD`,`patient_name`,`email`,`phone_No`,`birth_date`,`address`,`physical_disability`,`identity_proof`,`age`
-		logger.info("Enter password to update: ");
+		logger.info("\nEnter password to update: ");
 		patient.setPassword(scan.nextLine());
-		logger.info("Enter Patient Name : ");
+		logger.info("\nEnter Patient Name : ");
 		patient.setPatientName(scan.nextLine());
-		logger.info("Enter Patient emailId : ");
+		logger.info("\nEnter Patient emailId : ");
 		patient.setEmail(scan.nextLine());
-		logger.info("Enter Patient PhoneNo. : ");
+		logger.info("\nEnter Patient PhoneNo. : ");
 		patient.setPhoneNo(scan.nextLine());
-		logger.info("Enter Patient BirthDate : ");
+		logger.info("\nEnter Patient BirthDate : ");
 		patient.setBirthDate(scan.nextLine());
-		logger.info("Enter Patient address : ");
+		logger.info("\nEnter Patient address : ");
 		patient.setAddress(scan.nextLine());
-		logger.info("Enter Physical Disability : ");
+		logger.info("\nEnter Physical Disability : ");
 		patient.setPhysicalDisability(scan.nextLine());
-		logger.info("Enter identity Proof : ");
+		logger.info("\nEnter identity Proof : ");
 		patient.setIdentityProof(scan.nextLine());
 
 		String updateQuery = Constant.UPDATE_QUERY;

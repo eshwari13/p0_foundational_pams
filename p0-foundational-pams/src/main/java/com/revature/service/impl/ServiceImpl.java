@@ -1,10 +1,14 @@
 package com.revature.service.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import com.revature.config.DatabaseConnection;
 import com.revature.constants.Constant;
 import com.revature.dao.PatientDao;
 import com.revature.dao.impl.PatientDaoImpl;
@@ -15,27 +19,28 @@ public class ServiceImpl implements Service {
 	private static final Logger logger = Logger.getLogger(ServiceImpl.class);
 	PatientDao patient = new PatientDaoImpl();
 	Scanner scan = new Scanner(System.in);
+	Connection con = null;
 
 	public static void main(String[] args) {
 		ServiceImpl service = new ServiceImpl();
-		service.login();
+		service.authentication();
 	}
 
 	@Override
-	public void login() {
+	public void authentication() {
 		try {
 
 			do {
 				logger.info(Constant.welcomeUserMessage);
-				logger.info(Constant.signIn);
-				logger.info(Constant.signUp);
-				logger.info(Constant.exit);
+				System.out.println(Constant.signIn);
+				System.out.println(Constant.signUp);
+				System.out.println(Constant.exit);
 
 				int choice = scan.nextInt();
 				scan.nextLine();
 				switch (choice) {
 				case 1:
-					signIn();
+					login();
 					break;
 				case 2:
 					signUp();
@@ -54,6 +59,36 @@ public class ServiceImpl implements Service {
 
 	}
 
+	@Override
+	public void login() throws SQLException {
+
+		do {
+
+			logger.info("\n======= ENTER LOGIN DETAILS ======= ");
+			logger.info("\nEnter your USERNAME  :-");
+			String id = scan.next();
+
+			logger.info("\nEnter your PASSWORD :-");
+			String pass = scan.next();
+			boolean flag = false;
+			for (Patient i : patient.getPatients()) {
+
+				if (i.getLoginId().equals(id) && i.getPassword().equals(pass)) {
+
+					signIn();
+					flag = true;
+					break;
+				}
+			}
+			if (flag != true) {
+				logger.info("\n======Please enter correct details=======");
+			authentication();
+			}
+
+		} while (true);
+
+	}
+
 	private void exit() {
 		logger.info(Constant.exitMessage);
 	}
@@ -65,8 +100,8 @@ public class ServiceImpl implements Service {
 				logger.info("1.Update Patient Details");
 				logger.info("2.Dispaly Patient Details");
 				logger.info("3.Delete Patient Details");
-				logger.info("4.Dispaly All Patient Details");
-				logger.info("5.Exit");
+				// logger.info("4.Display All Patient Details");
+				logger.info("4.Exit");
 				logger.info("Enter your choice");
 
 				int choice = scan.nextInt();
@@ -78,9 +113,7 @@ public class ServiceImpl implements Service {
 					logger.info("Enter login Id which you want to update : ");
 					String loginIdToUpdate = scan.nextLine();
 					for (Patient i : patient.getPatients()) {
-						logger.info("inside for");
 						if (i.getLoginId().equals(loginIdToUpdate)) {
-							logger.info("inside if");
 							patient.update(i);
 							break;
 						}
@@ -98,14 +131,12 @@ public class ServiceImpl implements Service {
 					patient.delete(loginIdToDelete);
 					logger.info("Your's LoginId Deleted Successfully");
 					break;
+
 				case 4:
-					logger.info("list of patients" + "\n" + patient.getPatients());
-					break;
-				case 5:
 					System.exit(0);
 
 				default:
-					logger.info("Enter between 1and 6 only");
+					logger.info("Enter between 1 and 4 only");
 					break;
 
 				}
@@ -118,7 +149,6 @@ public class ServiceImpl implements Service {
 
 	private void signUp() throws SQLException {
 		patient.add();
-
 	}
 
 }
