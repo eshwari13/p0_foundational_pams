@@ -46,9 +46,9 @@ public class Patient {
 
 	@Override
 	public String toString() {
-		return "\n" + "=========Patient Details==========\n" + "loginId = " + loginId + "\n" + "password = " + password
+		return "\n" + "=========Patient Details==========\n" + "\nloginId = " + loginId + "\n" + "password = " + password
 				+ "\n" + "patientName = " + patientName + "\n" + "email = " + email + "\n" + "phoneNo = " + phoneNo
-				+ "\n" + "address = " + address + "\n" + "birthDate = " + birthDate + "age=" + age + "\n"
+				+ "\n" + "address = " + address + "\n" + "birthDate = " + birthDate + "\n" + "age = " + age + "\n"
 				+ "physical Disability = " + physicalDisability + "\n" + "identityProof = " + identityProof + "\n";
 
 	}

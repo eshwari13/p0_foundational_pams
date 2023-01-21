@@ -78,7 +78,7 @@ public class ServiceImpl implements Service {
 				}
 			}
 			if (flag != true) {
-				logger.info("\n======Please enter correct details=======");
+				logger.info("\n\n======Please enter correct details=======\n");
 				authentication();
 			}
 
