@@ -38,7 +38,7 @@ public class PatientDaoImpl implements PatientDao {
 		patient.setPhoneNo(scan.nextLine());
 		logger.info("\nEnter Patient BirthDate : ");
 		patient.setBirthDate(scan.nextLine());
-
+		patient.setAge();
 		String insertQuery = Constant.INSERT_QUERY;
 		PreparedStatement ps = con.prepareStatement(insertQuery);
 
@@ -84,10 +84,11 @@ public class PatientDaoImpl implements PatientDao {
 			patient.setEmail(rs.getString("email"));
 			patient.setPhoneNo(rs.getString("phone_No"));
 			patient.setBirthDate(rs.getString("birth_date"));
+			patient.setAge();
 			patient.setAddress(rs.getString("address"));
 			patient.setPhysicalDisability(rs.getString("physical_disability"));
 			patient.setIdentityProof(rs.getString("identity_proof"));
-			patient.setAge();
+			
 			patients.add(patient);
 		
 		}
@@ -108,13 +109,14 @@ public class PatientDaoImpl implements PatientDao {
 		patient.setPhoneNo(scan.nextLine());
 		logger.info("\nEnter Patient BirthDate : ");
 		patient.setBirthDate(scan.nextLine());
+		patient.getAge();
 		logger.info("\nEnter Patient address : ");
 		patient.setAddress(scan.nextLine());
 		logger.info("\nEnter Physical Disability : ");
 		patient.setPhysicalDisability(scan.nextLine());
 		logger.info("\nEnter identity Proof : ");
 		patient.setIdentityProof(scan.nextLine());
-
+	
 		String updateQuery = Constant.UPDATE_QUERY;
 		PreparedStatement ps = con.prepareStatement(updateQuery);
 
@@ -123,10 +125,10 @@ public class PatientDaoImpl implements PatientDao {
 		ps.setString(3, patient.getEmail());
 		ps.setString(4, patient.getPhoneNo());
 		ps.setString(5, patient.getBirthDate());
-		ps.setString(6, patient.getAddress());
-		ps.setString(7, patient.getPhysicalDisability());
-		ps.setString(8, patient.getIdentityProof());
-		ps.setInt(9, patient.getAge());
+		ps.setInt(6, patient.getAge());
+		ps.setString(7, patient.getAddress());
+		ps.setString(8, patient.getPhysicalDisability());
+		ps.setString(9, patient.getIdentityProof());
 		ps.setString(10, patient.getLoginId());
 
 		int n = ps.executeUpdate();
@@ -150,10 +152,11 @@ public class PatientDaoImpl implements PatientDao {
 			patient.setEmail(rs.getString("email"));
 			patient.setPhoneNo(rs.getString("phone_No"));
 			patient.setBirthDate(rs.getString("birth_date"));
+			patient.setAge();
 			patient.setAddress(rs.getString("address"));
 			patient.setPhysicalDisability(rs.getString("physical_disability"));
 			patient.setIdentityProof(rs.getString("identity_proof"));
-			patient.setAge();
+			
 		}
 		if (found == true) {
 			return patient;

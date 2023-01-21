@@ -6,4 +6,12 @@ public interface Service {
 	public void authentication();
 
 	public void login() throws SQLException;
+	
+	public void optionTobeSelected();
+	
+	public void signIn(String loginId) ;
+	
+	public void signUp() throws SQLException;
+	
+	public void exit();
 }

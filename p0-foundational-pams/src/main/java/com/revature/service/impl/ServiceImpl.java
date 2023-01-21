@@ -75,7 +75,7 @@ public class ServiceImpl implements Service {
 
 				if (i.getLoginId().equals(id) && i.getPassword().equals(pass)) {
 
-					signIn();
+					signIn(id);
 					flag = true;
 					break;
 				}
@@ -88,55 +88,44 @@ public class ServiceImpl implements Service {
 		} while (true);
 
 	}
-
-	private void exit() {
-		logger.info(Constant.exitMessage);
-	}
-
-	private void signIn() {
+	
+	
+	@Override
+	public void signIn(String loginId) {
 		try {
 			do {
-				logger.info("-----Select from below options for further process-----");
-				logger.info("1.Update Patient Details");
-				logger.info("2.Dispaly Patient Details");
-				logger.info("3.Delete Patient Details");
-				// logger.info("4.Display All Patient Details");
-				logger.info("4.Exit");
-				logger.info("Enter your choice");
-
+				optionTobeSelected();
 				int choice = scan.nextInt();
 				scan.nextLine();
 
 				switch (choice) {
 
 				case 1:
-					logger.info("Enter login Id which you want to update : ");
-					String loginIdToUpdate = scan.nextLine();
+					
 					for (Patient i : patient.getPatients()) {
-						if (i.getLoginId().equals(loginIdToUpdate)) {
+						if (i.getLoginId().equals(loginId)) {
 							patient.update(i);
 							break;
 						}
 					}
 					break;
 				case 2:
-					logger.info("Enter your loginId you want to view: ");
-					String loginId = scan.nextLine();
 					logger.info(patient.getPatientDetails(loginId));
 					break;
 				case 3:
 
-					logger.info("Enter your loginId you want to delete : ");
-					String loginIdToDelete = scan.nextLine();
-					patient.delete(loginIdToDelete);
-					logger.info("Your's LoginId Deleted Successfully");
+					
+					patient.delete(loginId);
+					logger.info("\nYour's LoginId Deleted Successfully");
 					break;
 
 				case 4:
-					System.exit(0);
+					logger.info(Constant.exitMessage);
+					authentication();
+					break;
 
 				default:
-					logger.info("Enter between 1 and 4 only");
+					logger.info("\nEnter between 1 and 4 only");
 					break;
 
 				}
@@ -146,9 +135,24 @@ public class ServiceImpl implements Service {
 		}
 
 	}
+	@Override
+	public void optionTobeSelected() {
+		System.out.println("=====Select from below options for further process=====");
+		System.out.println("1.Update Patient Details");
+		System.out.println("2.Dispaly Patient Details");
+		System.out.println("3.Delete Patient Details");
+		System.out.println("4.Exit");
+		System.out.println("Enter your choice");
 
-	private void signUp() throws SQLException {
+		
+	}
+	@Override
+	public void signUp() throws SQLException {
 		patient.add();
+	}
+	@Override
+	public  void exit() {
+		logger.info(Constant.exitMessage);
 	}
 
 }
