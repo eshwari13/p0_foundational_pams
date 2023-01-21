@@ -82,26 +82,26 @@ public class ServiceImpl implements Service {
 			}
 			if (flag != true) {
 				logger.info("\n======Please enter correct details=======");
-			authentication();
+				authentication();
 			}
 
 		} while (true);
 
 	}
-	
-	
+
 	@Override
 	public void signIn(String loginId) {
 		try {
 			do {
-				optionTobeSelected();
+				logger.info("\n=====Select from below options for further process=====\n" + "1.Update Patient Details\n"
+						+ "2.Dispaly Patient Details\n" + "3.Delete Patient Details\n" + "4.Exit"
+						+ "Enter your choice\n");
 				int choice = scan.nextInt();
 				scan.nextLine();
 
 				switch (choice) {
 
 				case 1:
-					
 					for (Patient i : patient.getPatients()) {
 						if (i.getLoginId().equals(loginId)) {
 							patient.update(i);
@@ -113,8 +113,6 @@ public class ServiceImpl implements Service {
 					logger.info(patient.getPatientDetails(loginId));
 					break;
 				case 3:
-
-					
 					patient.delete(loginId);
 					logger.info("\nYour's LoginId Deleted Successfully");
 					break;
@@ -135,24 +133,16 @@ public class ServiceImpl implements Service {
 		}
 
 	}
-	@Override
-	public void optionTobeSelected() {
-		System.out.println("=====Select from below options for further process=====");
-		System.out.println("1.Update Patient Details");
-		System.out.println("2.Dispaly Patient Details");
-		System.out.println("3.Delete Patient Details");
-		System.out.println("4.Exit");
-		System.out.println("Enter your choice");
 
-		
+	@Override
+	public void exit() {
+		logger.info(Constant.exitMessage);
 	}
+
 	@Override
 	public void signUp() throws SQLException {
 		patient.add();
-	}
-	@Override
-	public  void exit() {
-		logger.info(Constant.exitMessage);
+
 	}
 
 }
